@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/catalog")
+@CrossOrigin(origins = "http://localhost:5173/") // frontend URL
 public class ProductController {
 
     private final ProductService productService;

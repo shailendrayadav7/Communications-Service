@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.takeo</groupId>
-	<artifactId>OrderingApi</artifactId>
+	<artifactId>OrderApi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>OrderingApi</name>
-	<description>Ordering API for Consumer Customer</description>
+	<name>OrderApi</name>
+	<description>Ordering API for Communication Service</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

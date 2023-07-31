@@ -1,13 +1,13 @@
-package com.takeo.OrderingApi;
+package com.takeo.OrderApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrderingApiApplication {
+public class OrderApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrderingApiApplication.class, args);
+		SpringApplication.run(OrderApiApplication.class, args);
 	}
 
 }

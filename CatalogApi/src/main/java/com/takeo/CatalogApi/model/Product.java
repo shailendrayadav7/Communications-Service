@@ -11,6 +11,10 @@ public class Product {
     private String name;
     private double price;
 
+    public Product(){   //make sure to have default constructor
+
+    }
+
     public Product(Long id, String name, double price) {
         this.id = id;
         this.name = name;
