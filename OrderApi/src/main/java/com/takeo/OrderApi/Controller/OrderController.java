@@ -20,55 +20,28 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/allorder")
-    public List<CustomerOrder> getAllProducts(){
+    @GetMapping
+    public List<CustomerOrder> getAllProducts() {
         return orderService.getAllOrders();
     }
 
-
-
     @PostMapping("/create")
     public ResponseEntity<CustomerOrder> createOrder(@PathVariable Long customerId, @RequestBody CustomerOrder customerOrder) {
-
         // Implement logic to create an order for the given customer
-
         // Set the customer for the order based on the customerId
-
-
-
         CustomerOrder createdCustomerOrder = orderService.createOrderForCustomer(customerId, customerOrder);
-
         return new ResponseEntity<>(createdCustomerOrder, HttpStatus.CREATED);
-
     }
 
     @PutMapping("/{orderId}")
     public ResponseEntity<CustomerOrder> updateOrder(@PathVariable Long customerId, @PathVariable Long orderId, @RequestBody CustomerOrder updatedCustomerOrder) {
         // Implement logic to update the order with the provided orderId for the given customer
-
-
         updatedCustomerOrder = orderService.updateOrderForCustomer(customerId, orderId, updatedCustomerOrder);
-
         return new ResponseEntity<>(updatedCustomerOrder, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteOrder(@PathVariable Long id) {
-        orderService.deleteOrder(id);
+    @DeleteMapping("/{orderId}")
+    public void deleteOrder(@PathVariable Long orderId) {
+        orderService.deleteOrder(orderId);
     }
-
-    @GetMapping
-
-    public ResponseEntity<List<CustomerOrder>> getOrdersForCustomer(@PathVariable Long customerId) {
-
-        // Implement logic to get all orders for the given customer
-
-
-
-        List<CustomerOrder> customerOrders = orderService.getOrdersForCustomer(customerId);
-
-        return new ResponseEntity<>(customerOrders, HttpStatus.OK);
-
-    }
-
 }
