@@ -1,5 +1,6 @@
 package com.takeo.OrderApi.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,8 +11,9 @@ import java.util.Optional;
 public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
-    private Long id;
+//    @Column(name = "order_id")
+//    private Long id;
+    private Long order_id;
 
     @Column(name = "status")
     private String status;
@@ -19,6 +21,7 @@ public class CustomerOrder {
     @Column(name = "created_date")
     private Date createdDate;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -35,11 +38,11 @@ public class CustomerOrder {
 
 
     public Long getId() {
-        return id;
+        return order_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long order_id) {
+        this.order_id = order_id;
     }
 
     public Customer getCustomer() {

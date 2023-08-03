@@ -35,15 +35,16 @@ public class OrderService {
     public CustomerOrder updateOrder(Long id, CustomerOrder updatedCustomerOrder) {
         Optional<CustomerOrder> existingOrder = orderRepository.findById(id);
         if (existingOrder.isPresent()) {
-            CustomerOrder productToUpdate = existingOrder.get();
-            CustomerOrder customerOrderToUpdate = null;
+            CustomerOrder customerOrderToUpdate = existingOrder.get();
             customerOrderToUpdate.setStatus(updatedCustomerOrder.getStatus());
             customerOrderToUpdate.setCreatedDate(updatedCustomerOrder.getCreatedDate());
+
             return orderRepository.save(customerOrderToUpdate);
         } else {
-            throw new IllegalArgumentException("Product with ID " + id + " not found");
+            throw new IllegalArgumentException("Order with ID " + id + " not found");
         }
     }
+
 
     public void deleteProduct(Long id) {
         orderRepository.deleteById(id);
@@ -53,7 +54,7 @@ public class OrderService {
     }
 
     public CustomerOrder createOrderForCustomer(CustomerOrder customerOrder) {
-        return customerOrder;
+        return orderRepository.save(customerOrder);
     }
 
     public CustomerOrder updateOrderForCustomer(Long customerId, Long orderId, CustomerOrder updatedCustomerOrder) {

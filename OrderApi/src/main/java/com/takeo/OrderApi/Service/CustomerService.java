@@ -33,8 +33,7 @@ public class CustomerService {
     public Customer updateCustomer(Long id, Customer updatedCustomer) {
         Optional<Customer> existingCustomer = customerRepository.findById(id);
         if (existingCustomer.isPresent()) {
-            Customer customer = existingCustomer.get();
-            Customer customerToUpdate = null;
+            Customer customerToUpdate = existingCustomer.get();
             customerToUpdate.setName(updatedCustomer.getName());
             customerToUpdate.setEmail(updatedCustomer.getEmail());
             return customerRepository.save(customerToUpdate);
@@ -42,6 +41,7 @@ public class CustomerService {
             throw new IllegalArgumentException("Customer with ID " + id + " not found");
         }
     }
+
 
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);

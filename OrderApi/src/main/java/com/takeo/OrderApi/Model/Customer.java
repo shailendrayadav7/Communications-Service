@@ -1,6 +1,10 @@
 package com.takeo.OrderApi.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -10,6 +14,10 @@ public class Customer {
     private Long customer_id;
     private String name;
     private String email;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<CustomerOrder> customerOrders;
 
     private Customer(){
 
