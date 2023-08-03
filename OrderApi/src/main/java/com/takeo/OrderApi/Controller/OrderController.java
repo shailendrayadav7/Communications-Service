@@ -1,6 +1,8 @@
 package com.takeo.OrderApi.Controller;
 
+import com.takeo.OrderApi.Model.Customer;
 import com.takeo.OrderApi.Model.CustomerOrder;
+import com.takeo.OrderApi.Service.CustomerService;
 import com.takeo.OrderApi.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,38 +12,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/consumer/customers/{customerId}/orders")
+@RequestMapping("/api/consumer/customers")
 @CrossOrigin(origins = "http://localhost:5173/") // frontend URL
 public class OrderController {
-    private final OrderService orderService;
+    private final CustomerService customerService;
 
     @Autowired
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @GetMapping
-    public List<CustomerOrder> getAllProducts() {
-        return orderService.getAllOrders();
+    public List<Customer> getAllProducts() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CustomerOrder> createOrder(@PathVariable Long customerId, @RequestBody CustomerOrder customerOrder) {
+    public ResponseEntity<Customer> createOrder(Long customerId, @RequestBody Customer customer) {
         // Implement logic to create an order for the given customer
         // Set the customer for the order based on the customerId
-        CustomerOrder createdCustomerOrder = orderService.createOrderForCustomer(customerId, customerOrder);
-        return new ResponseEntity<>(createdCustomerOrder, HttpStatus.CREATED);
+        Customer createdCustomer = customer.createCustomer(customerId);
+        return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
     }
 
     @PutMapping("/{orderId}")
-    public ResponseEntity<CustomerOrder> updateOrder(@PathVariable Long customerId, @PathVariable Long orderId, @RequestBody CustomerOrder updatedCustomerOrder) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long customerId, @RequestBody Customer updatedCustomer) {
         // Implement logic to update the order with the provided orderId for the given customer
-        updatedCustomerOrder = orderService.updateOrderForCustomer(customerId, orderId, updatedCustomerOrder);
-        return new ResponseEntity<>(updatedCustomerOrder, HttpStatus.OK);
+        updatedCustomer = customerService.updateCustomer(customerId, updatedCustomer);
+        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
     }
 
     @DeleteMapping("/{orderId}")
-    public void deleteOrder(@PathVariable Long orderId) {
-        orderService.deleteOrder(orderId);
+    public void deleteCustomer(@PathVariable Long orderId) {
+        customerService.deleteCustomer(orderId);
     }
 }
