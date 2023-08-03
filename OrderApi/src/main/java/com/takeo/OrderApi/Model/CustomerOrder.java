@@ -3,14 +3,20 @@ package com.takeo.OrderApi.Model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
+@Table(name = "customer_order")
 public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Long id;
-    //private Long customerId;
+
+    @Column(name = "status")
     private String status;
+
+    @Column(name = "created_date")
     private Date createdDate;
 
     @ManyToOne
@@ -21,12 +27,12 @@ public class CustomerOrder {
 
     }
 
-    public CustomerOrder(Long id, Long customerId, String status, Date createdDate) {
-        this.id = id;
-        //this.customerId = customerId;
+    public CustomerOrder(String status, Date createdDate, Customer customer) {
         this.status = status;
         this.createdDate = createdDate;
+        this.customer = customer;
     }
+
 
     public Long getId() {
         return id;

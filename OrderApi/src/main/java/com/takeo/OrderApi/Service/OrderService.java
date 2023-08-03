@@ -2,12 +2,15 @@ package com.takeo.OrderApi.Service;
 
 import com.takeo.OrderApi.Model.CustomerOrder;
 import com.takeo.OrderApi.Repository.OrderRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Transactional
 @Service
 public class OrderService {
     private final OrderRepository orderRepository;
@@ -49,7 +52,7 @@ public class OrderService {
     public void deleteOrder(Long id) {
     }
 
-    public CustomerOrder createOrderForCustomer(Long customerId, CustomerOrder customerOrder) {
+    public CustomerOrder createOrderForCustomer(CustomerOrder customerOrder) {
         return customerOrder;
     }
 
@@ -61,4 +64,11 @@ public class OrderService {
         return null;
     }
 
+    public CustomerOrder getOrderByIdAndCustomerId(Long orderId, Long customerId) {
+        return null;
+    }
+
+    public CustomerOrder updateOrder(CustomerOrder updatedCustomerOrder) {
+        return updatedCustomerOrder;
+    }
 }

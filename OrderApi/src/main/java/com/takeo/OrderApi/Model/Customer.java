@@ -15,17 +15,16 @@ public class Customer {
 
     }
 
-    public Customer(Long customer_id, String name, String email) {
-        this.customer_id = customer_id;
+    public Customer(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
-    public Long getId() {
+    public Long getCustomer_id() {
         return customer_id;
     }
 
-    public void setId(Long customer_id) {
+    public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
     }
 
@@ -45,7 +44,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer createCustomer(Long customerId) {
-        return null;
-    }
+//    public Customer createCustomer(Long customerId) {
+//        return null;
+//    }
 }

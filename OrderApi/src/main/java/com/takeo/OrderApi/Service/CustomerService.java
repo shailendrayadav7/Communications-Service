@@ -22,8 +22,8 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Optional<Customer> getCustomerById(Long id){
-        return customerRepository.findById(id);
+    public Optional<Customer> getCustomerById(Long customerId){
+        return customerRepository.findById(customerId);
     }
 
     public Customer createCustomer(Customer customer) {
