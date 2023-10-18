@@ -21,6 +21,4 @@ For seamless integration and deployment, I established a robust CI/CD pipeline u
 ## Frontend: HTML UI Client
 To complement the backend APIs, I crafted a simple yet effective HTML UI client using ReactJS. This client facilitates interaction with the APIs, enabling users to send requests to endpoints and view results effortlessly. The UI client, designed to be responsive and user-friendly, emphasizes the effective execution of the APIs.
 
-I invite you to explore this repository to witness the synergy of backend API development, Cucumber testing, and a streamlined CI/CD pipeline. Feel free to connect, collaborate, and code the future with me!
-
 [Repository Link](https://github.com/shailendrayadav7/Communications-Service)
